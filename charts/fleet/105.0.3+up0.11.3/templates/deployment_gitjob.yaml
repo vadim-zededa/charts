@@ -29,6 +29,8 @@ spec:
         {{- end }}
     spec:
       serviceAccountName: gitjob
+      imagePullSecrets:
+      - name: zks-fleet-image-secret
       containers:
         - image: "{{ template "system_default_registry" $ }}{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
           name: gitjob
