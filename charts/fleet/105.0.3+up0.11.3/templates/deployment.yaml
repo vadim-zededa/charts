@@ -31,6 +31,8 @@ spec:
       - name: zks-fleet-image-secret #vf hard code for now!!!!! sks-server will create this secret before this deployment will be created
       containers:
       - env:
+        - name: VADIM
+          value: vadim
         - name: NAMESPACE
           valueFrom:
             fieldRef:
@@ -86,7 +88,7 @@ spec:
 {{- if $.Values.extraEnv }}
 {{ toYaml $.Values.extraEnv | indent 8}}
 {{- end }}
-        image: '{{ template "system_default_registry" $ }}{{ $.Values.image.repository }}:{{ $.Values.image.tag }}'
+        image: vadimzededa/fleet:test #'{{ template "system_default_registry" $ }}{{ $.Values.image.repository }}:{{ $.Values.image.tag }}'
         name: fleet-controller
         imagePullPolicy: "{{ $.Values.image.imagePullPolicy }}"
         {{- if $.Values.metrics.enabled }}
