@@ -124,6 +124,8 @@ spec:
             name: tmp
       {{- if not $shard.id }} # Only deploy cleanup and agent management through sharding-less deployment
       - env:
+        - name: VADIM
+          value: vadim
         - name: NAMESPACE
           valueFrom:
             fieldRef:
@@ -165,6 +167,8 @@ spec:
             - ALL
         {{- end }}
       - env:
+        - name: VADIM
+          value: vadim
         - name: NAMESPACE
           valueFrom:
             fieldRef:
